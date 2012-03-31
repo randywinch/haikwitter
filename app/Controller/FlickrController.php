@@ -59,7 +59,9 @@ class FlickrController extends AppController {
  * @param mixed What page to display
  * @return void
  */
-	public function search($query = 'beaches') {
+	public function search($id) {
+
+
 
 		$apiKey = '9807afb683f16f992c1a2d2ee8bf2b49';
 
