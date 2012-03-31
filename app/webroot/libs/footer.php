@@ -1,8 +1,10 @@
-	<footer>
+	<footer id="global-footer">
 		<p>
-			Copyright &copy; 2011 The 1st Movement LLC. All Rights Reserved.
+			Copyright &copy; 2012 The 1st Movement LLC. All Rights Reserved.
 			<br>
-			Coded with care by Matt Webb :)
+			Coded with care by Matt Webb, Randy Winch and Jake Gibbons :)
+			<br>
+			Designed by: Noah Dempewolf
 		</p>
 	</footer>
 

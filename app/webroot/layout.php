@@ -1,15 +1,29 @@
 <?php include("libs/header.php"); ?>
 
-	<div role="main">
-		<h1>The T1M HTML/CSS Boilerplate</h1>
-			
-		<h3>CSS Framework Breakdown</h3>
-		<ul>
-			<li><strong>010_reset.css</strong> - This resets all default CSS stylings in all browsers back to a common baseline.</li>
-			<li><strong>900_main.css</strong> - This will contain all styles that are specific to a project.</li>
-			<li><strong>999_print.css</strong> - This holds all print styles and the styles must be with in the print media query.</li>
-			<li><strong>ie.css</strong> - This houses the hacks to make IE behave.</li>
-		</ul>
+	<div id="homeContainer" class="container slim" role="main">
+		<header>
+			<a href="./" id="logo">
+				<img src="img/logo.png" alt="Haikwitter">
+			</a>
+		</header>
+		<form id="createHaiku" name="createHaiku" action="" method="post">
+			<p>
+				<input type="text" id="haiku1" name="haiku1" placeholder="Enter five words">
+				<span id="haiku1Count" class="word-count" data-limit="5">5</span>
+			</p>
+			<p>
+				<input type="text" id="haiku2" name="haiku2" placeholder="Enter seven words">
+				<span id="haiku2Count" class="word-count" data-limit="7">7</span>
+			</p>
+			<p>
+				<input type="text" id="haiku3" name="haiku3" placeholder="Enter five words">
+				<span id="haiku3Count" class="word-count" data-limit="5">5</span>
+			</p>
+			<p>
+				<button id="submitHaiku" class="form-button">express yourself <span class="arrow"></span></button>
+			</p>
+			<div class="clearfix"></div>
+		</form>
 	</div>
 	
 <?php include("libs/footer.php"); ?>

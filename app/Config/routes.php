@@ -27,13 +27,10 @@
  */
 	Router::connect('/', array('controller' => 'pages', 'action' => 'add'));
 	Router::connect('/view/*', array('controller' => 'pages', 'action' => 'view'));
-/**
- * Flickr route
- */
-	Router::connect('/flickr', array('controller' => 'flickr', 'action' => 'search'));
+
 
 /**
- * Load all plugin routes.  See the CakePlugin documentation on
+ * Load all plugin routes.  See the CakePlugin documentation on 
  * how to customize the loading of plugin routes.
  */
 	CakePlugin::routes();
@@ -43,4 +40,3 @@
  * the built-in default routes.
  */
 	require CAKE . 'Config' . DS . 'routes.php';
-

@@ -21,6 +21,11 @@
 
 App::uses('AppController', 'Controller');
 
+//Text Statistics
+App::import('Vendor', 'Text-Statistics/TextStatistics');
+
+
+
 /**
  * Static content controller
  *
@@ -121,5 +126,19 @@ $resultURL = "http://farm" . $result['photos']['photo'][0]['farm'] . ".static.fl
 	            $this->redirect('/view/'. $data['Haiku']['id']);
 	        }
 	    }
+	}
+
+	public function count($text){
+		echo $this->_syllables($text);
+	}
+
+	private function _syllables($text){
+		$this->layout = false;
+		$this->autoRender = false;
+
+		$text = strip_tags(urldecode($text));
+		
+        $statistics = new TextStatistics;
+        return $statistics->syllable_count($text);		
 	}
 }
