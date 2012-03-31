@@ -1,13 +1,18 @@
 /*-------------------------------------------------------------------------
 
 	Typography Definitions
-
+	
 -------------------------------------------------------------------------*/
 
 /*	Basic Styles
 -------------------------------------------------------------------------*/
-body {
+html {
+	min-height: 700px;
+	background: transparent url(../img/bkg.jpg) repeat 0 0;
+	outline: none;
+	font-family: 'Gudea', sans-serif;
 }
+
 
 /* Headings
 -------------------------------------------------------------------------*/
@@ -61,9 +66,14 @@ h6 {
 /*-------------------------------------------------------------------------
 
 	Header Definitions
-
+	
 -------------------------------------------------------------------------*/
-
+#logo {
+	display: block;
+	margin: 0 0 45px;
+	padding: 20px 0 0;
+	text-align: center;
+}
 
 
 
@@ -77,5 +87,188 @@ h6 {
 /*-------------------------------------------------------------------------
 
 	Footer Definitions
+	
+-------------------------------------------------------------------------*/
+#global-footer {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/*-------------------------------------------------------------------------
+
+	Layout Definitions
+	
+-------------------------------------------------------------------------*/
+.container {
+	width: 960px;
+	margin: 0 auto;
+	background: #f1efd7;
+}
+.container.slim {
+	width: 290px;
+	padding: 0 55px 50px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*-------------------------------------------------------------------------
+
+	Inputs Definitions
 
 -------------------------------------------------------------------------*/
+input {
+	display: inline-block;
+	width: 240px;
+	padding: 6px 0 0;
+	margin: 0 15px 0 0;
+	background: transparent;
+	border: 0;
+	border-top: 8px #8a877b solid;
+	outline: none;
+}
+input:focus {
+	border-top: 8px #d81670 solid;
+}
+::-webkit-input-placeholder  {
+	color: #6d6e71;
+	font-family: 'Gudea', sans-serif;
+}
+input:-moz-placeholder {
+	color: #6d6e71;
+	font-family: 'Gudea', sans-serif;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*-------------------------------------------------------------------------
+
+	Create Haiku Form Definitions
+
+-------------------------------------------------------------------------*/
+#createHaiku {
+	height: 320px;
+}
+#createHaiku p {
+	margin: 0 0 50px;
+}
+.word-count {
+	display: inline-block;
+	width: 30px;
+	padding: 6px 0 0;
+	border-top: 8px #a7a588 solid;
+	color: #a7a588;
+	text-align: center;
+}
+.button-container {
+	height: 45px;
+}
+.button {
+	position: relative;
+	width: 162px;
+	right: -75px;
+	top: 0;
+	float: right;
+	padding: 8px 10px;
+	border: 0;
+	background: #d81670;
+	color: #fff;
+	font-family: 'Gudea', sans-serif;
+}
+.button::after {  
+	content: ' ';
+	position: absolute;  
+	width: 0;
+	height: 0;  
+	right: 0;
+	top: 100%;  
+	border-width: 5px 10px;  
+	border-style: solid;
+	border-color: #3f0544 transparent transparent #3f0544;  
+}
+.button:hover {
+	background: #bc045a;
+	cursor: pointer;
+}
+.button.purple {
+	background-color: #a74a9b;
+}
+.button.purple:hover {
+	background-color: #96368a;
+}
+.arrow {
+	display: inline-block;
+	position: relative;
+	float: right;
+	top: 6px;
+	right: 13px;
+	width: 0;
+	height: 0;
+	border-top: 4px solid transparent;
+	border-bottom: 4px solid transparent;
+	border-left: 12px solid #fff;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*-------------------------------------------------------------------------
+
+	Details Page Definitions
+	
+-------------------------------------------------------------------------*/
+#detailsContainer {
+	background: rgba(170, 169, 141, 0.85);
+}
+#detailsContainer #logo img {
+	width: 130px;
+}
+#detailsContainer #logo {
+	margin-bottom: 68px;
+}
+.haiku-detail {
+	margin: 0 0 80px;
+	font-size: 30px;
+	color: #fff;
+}
