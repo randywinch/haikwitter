@@ -215,3 +215,12 @@ input:-moz-placeholder {
 .form-button:hover {
 	background: #a11989;
 }
+.arrow {
+	display: inline-block;
+	width: 0;
+	height: 0;
+	border-top: 4px solid transparent;
+	border-bottom: 4px solid transparent;
+
+	border-left: 12px solid #fff;
+}

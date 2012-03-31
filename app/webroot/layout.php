@@ -20,7 +20,7 @@
 				<span id="haiku3Count" class="word-count" data-limit="5">5</span>
 			</p>
 			<p>
-				<button id="submitHaiku" class="form-button">express yourself</button>
+				<button id="submitHaiku" class="form-button">express yourself <span class="arrow"></span></button>
 			</p>
 			<div class="clearfix"></div>
 		</form>
