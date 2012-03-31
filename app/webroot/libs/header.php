@@ -7,24 +7,20 @@
 <head>
 	<meta charset="utf-8">
 	
-	<title>The1stMovement Boilerplate</title>
+	<title>Haikwitter</title>
 	<meta name="keywords" content="">
 	<meta name="description" content="">
-	<meta name="author" content="The 1st Movement">
+	<meta name="author" content="Matt Webb, Randy Winch and Jake Gibbons">
 	
-	<!-- Mobile viewport optimized: j.mp/bplateviewport -->
-	<meta name="viewport" content="width=device-width">
-	
-	<!-- Place favicon.ico and apple-touch-icon.png in the root of your domain -->
-	<link rel="shortcut icon" href="favicon.ico">
-	<link rel="apple-touch-icon" href="apple-touch-icon.png">
-	
+	<link href="http://fonts.googleapis.com/css?family=Gudea" rel="stylesheet">
+
 	<!-- styles concatenated and minified via ant build script-->
 	<link rel="stylesheet" href="css/010_base.css">
 	<link rel="stylesheet" href="css/900_style.css">
 	<link rel="stylesheet" href="css/ie.css">
 	<link rel="stylesheet" href="css/999_print.css">
 	<!-- end styles-->	
+
 	
 	<!-- All JavaScript at the bottom, except this Modernizr build.
 		 Modernizr enables HTML5 elements & feature detects for optimal performance.
@@ -43,16 +39,3 @@
 			</a>.
 		</div>
 	</noscript>
-			
-	<header>
-		<a href="./" id="logo">
-			<img src="img/logo.png" alt="">
-		</a>
-		<nav role="global-navigation">
-			<ul>
-				<li>
-					<a href="./" class="current">Home</a>
-				</li>
-			</ul>
-		</nav>
-	</header>
