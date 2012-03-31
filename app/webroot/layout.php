@@ -1,3 +1,4 @@
+<?php $page = "home" ?>
 <?php include("libs/header.php"); ?>
 
 	<div id="homeContainer" class="container slim" role="main">
@@ -20,7 +21,7 @@
 				<span id="haiku3Count" class="word-count" data-limit="5">5</span>
 			</p>
 			<p>
-				<button id="submitHaiku" class="form-button">express yourself <span class="arrow"></span></button>
+				<a id="submitHaiku" class="button">express yourself <span class="arrow"></span></a>
 			</p>
 			<div class="clearfix"></div>
 		</form>
