@@ -77,8 +77,6 @@ class PagesController extends AppController {
 	        ));
 		}
 
-		//split
-
 		$uselessWords = array('a','the','this','of','for','to','from','at','with','where','when','what',' ');
 		$haikuArray = array_diff(array_unique(array_merge(split(' ', $entry['Haiku']['line_1']),split(' ', $entry['Haiku']['line_2']),split(' ', $entry['Haiku']['line_3']))), $uselessWords);
 		$query = $haikuArray[array_rand($haikuArray)];
@@ -91,7 +89,7 @@ class PagesController extends AppController {
 		$result = unserialize($result);
 		if(!empty($result) && !empty($result['photos']['photo'])){
 			$resultURL = "http://farm" . $result['photos']['photo'][0]['farm'] . ".static.flickr.com/" . $result['photos']['photo'][0]['server'] . "/" . $result['photos']['photo'][0]['id'] . "_" . $result['photos']['photo'][0]['secret'] . "_b.jpg";
-			$this->set(compact('resultURL') );
+			$this->set(compact('resultURL', 'query') );
 		}
 
 

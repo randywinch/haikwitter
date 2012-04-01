@@ -4,7 +4,7 @@
 				<?php echo $this->Html->image('logo.png', array('alt'=>'Haikwitter')); ?>
 			</a>
 		</header>
-		<p class="haiku-detail">
+		<p class="haiku-detail" data-selected-term="<?php echo $query; ?>">
 			<?php echo $entry['Haiku']['line_1'];?><br>
 			<?php echo $entry['Haiku']['line_2'];?><br>
 			<?php echo $entry['Haiku']['line_3'];?>
