@@ -19,11 +19,12 @@
 $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework');
 ?>
 <!doctype html>
-<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7 ie6" lang="en"><![endif]-->
-<!--[if IE 7]><html class="no-js lt-ie9 lt-ie8 ie7" lang="en"><![endif]-->
-<!--[if IE 8]><html class="no-js lt-ie9 ie8" lang="en"><![endif]-->
-<!--[if IE 9]><html class="no-js ie9" lang="en"><![endif]-->
-<!--[if gt IE 9]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<?php if(isset($resultURL)){
+		echo "<html lang='en' class='no-js full-background' style='background-image: url({$resultURL});'>";
+	} else {
+		echo "<html lang='en' class='no-js'>";
+	};
+?>
 <head>
 	<meta charset="utf-8">
 
@@ -57,12 +58,7 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
 		 Create your own custom Modernizr build: www.modernizr.com/download/ -->
 	<script src="js/libs/modernizr-2.5.2.min.js"></script>
 </head>
-<?php if(isset($resultURL)){
-		echo "<body class='full-background' style='background-image: url({$resultURL});'>";
-	} else {
-		echo "<body>";
-	};
-?>
+	<body>
 	<!-- This is incase a user doesn't have JS enabled on their browser -->
 	<noscript>
 		<div class="js-disabled">
@@ -73,13 +69,6 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
 			</a>.
 		</div>
 	</noscript>
-
-	<div id="homeContainer" class="container slim" role="main">
-		<header>
-			<a href="./" id="logo">
-				<?php echo $this->Html->image('logo.png'); ?>
-			</a>
-		</header>
 
 		<?php echo $this->fetch('content'); ?>
 

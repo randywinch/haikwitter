@@ -1,3 +1,10 @@
+	<div id="homeContainer" class="container slim" role="main">
+		<header>
+			<a href="<?php echo $this->Html->url('./');?>" id="logo">
+				<?php echo $this->Html->image('logo.png', array('alt'=>'Haikwitter')); ?>
+			</a>
+		</header>
+
 		<?php echo $this->Form->create('Haiku', array(
 				'id'=>'createHaiku'
 				)
@@ -42,3 +49,4 @@
 			</p>
 			<div class="clearfix"></div>
 		<?php echo $this->Form->end(); ?>
+	</div>
