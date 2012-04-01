@@ -7,12 +7,13 @@
 /*	Basic Styles
 -------------------------------------------------------------------------*/
 html {
+	height: 100%;
 	min-height: 700px;
 	background: transparent url(../img/bkg.jpg) repeat 0 0;
 	outline: none;
 	font-family: 'Gudea', sans-serif;
 }
-body.full-background {
+html.full-background {
 	background-repeat: no-repeat;
 	background-position: center center;
 	background-attachment: fixed;
