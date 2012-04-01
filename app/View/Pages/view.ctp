@@ -4,7 +4,7 @@
 				<?php echo $this->Html->image('logo.png', array('alt'=>'Haikwitter')); ?>
 			</a>
 		</header>
-		<p class="haiku-detail" data-selected-term="<?php echo $query; ?>">
+		<p class="haiku-detail" data-selected-term="<?php if(isset($query)){echo $query;} ?>">
 			<?php echo $entry['Haiku']['line_1'];?><br>
 			<?php echo $entry['Haiku']['line_2'];?><br>
 			<?php echo $entry['Haiku']['line_3'];?>
@@ -16,3 +16,6 @@
 			<a id="submitHaiku" class="button" href="<?php echo $this->Html->url('/view/' . $next['Haiku']['id']); ?>">randomize <span class="arrow"></span></a>
 		</div>
 	</div>
+
+
+	<!-- wider padding, smaller font, point buttons both directions -->
