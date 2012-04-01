@@ -36,7 +36,6 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
 		echo $this->Html->meta('icon');
 
 		echo $this->Html->css( array(
-			'cake.generic',
 			'010_base',
 			'900_style',
 			'ie',
@@ -58,8 +57,12 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
 		 Create your own custom Modernizr build: www.modernizr.com/download/ -->
 	<script src="js/libs/modernizr-2.5.2.min.js"></script>
 </head>
-
-<body>
+<?php if(isset($resultURL)){
+		echo "<body class='full-background' style='background-image: url({$resultURL});'>";
+	} else {
+		echo "<body>";
+	};
+?>
 	<!-- This is incase a user doesn't have JS enabled on their browser -->
 	<noscript>
 		<div class="js-disabled">
@@ -74,7 +77,7 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
 	<div id="homeContainer" class="container slim" role="main">
 		<header>
 			<a href="./" id="logo">
-				<img src="img/logo.png" alt="Haikwitter">
+				<?php echo $this->Html->image('logo.png'); ?>
 			</a>
 		</header>
 
@@ -112,6 +115,6 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
 		<script>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})</script>
 	<![endif]-->
 
-	<?php echo $this->element('sql_dump'); ?>
+	<?php /*echo $this->element('sql_dump');*/ ?>
 </body>
 </html>

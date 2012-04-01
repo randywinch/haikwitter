@@ -38,15 +38,7 @@
 				<span id="haiku3Count" class="word-count" data-limit="5">5</span>
 			</p>
 			<p>
-				<button id="submitHaiku" class="form-button">express yourself <span class="arrow"></span></button>
+				<button id="submitHaiku" class="button">express yourself <span class="arrow"></span></button>
 			</p>
 			<div class="clearfix"></div>
 		<?php echo $this->Form->end(); ?>
-
-
-Add Haiku!
-<?php echo $this->Form->create('Haiku'); ?>
-<?php echo $this->Form->input('Haiku.line_1'); ?>
-<?php echo $this->Form->input('Haiku.line_2'); ?>
-<?php echo $this->Form->input('Haiku.line_3'); ?>
-<?php echo $this->Form->end('Create'); ?>

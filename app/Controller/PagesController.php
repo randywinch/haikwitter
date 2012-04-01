@@ -83,22 +83,19 @@ class PagesController extends AppController {
 		$haikuArray = array_diff(array_unique(array_merge(split(' ', $entry['Haiku']['line_1']),split(' ', $entry['Haiku']['line_2']),split(' ', $entry['Haiku']['line_3']))), $uselessWords);
 		$query = $haikuArray[array_rand($haikuArray)];
 
-		pr($uselessWords);
-		pr($entry);
-		pr($haikuArray);
-		pr($query);
-		//find unique items
-
 		$apiKey = '9807afb683f16f992c1a2d2ee8bf2b49';
 
 		$search = 'http://flickr.com/services/rest/?method=flickr.photos.search&api_key=' . $apiKey . '&text=' . urlencode($query) . '&per_page=1&format=php_serial';
+
 		$result = file_get_contents($search);
 		$result = unserialize($result);
-$resultURL = "http://farm" . $result['photos']['photo'][0]['farm'] . ".static.flickr.com/" . $result['photos']['photo'][0]['server'] . "/" . $result['photos']['photo'][0]['id'] . "_" . $result['photos']['photo'][0]['secret'] . "_b.jpg";
-		$this->set(compact('resultURL', 'result') );
+		if(!empty($result) && !empty($result['photos']['photo'])){
+			$resultURL = "http://farm" . $result['photos']['photo'][0]['farm'] . ".static.flickr.com/" . $result['photos']['photo'][0]['server'] . "/" . $result['photos']['photo'][0]['id'] . "_" . $result['photos']['photo'][0]['secret'] . "_b.jpg";
+			$this->set(compact('resultURL') );
+		}
 
 
-		//Get Random Next Entry
+
 		$next = $this->Haiku->find('first',array(
 			'conditions' => array(
 			    'Haiku.active'=>1,
@@ -137,8 +134,8 @@ $resultURL = "http://farm" . $result['photos']['photo'][0]['farm'] . ".static.fl
 		$this->autoRender = false;
 
 		$text = strip_tags(urldecode($text));
-		
+
         $statistics = new TextStatistics;
-        return $statistics->syllable_count($text);		
+        return $statistics->syllable_count($text);
 	}
 }
