@@ -1,6 +1,6 @@
 	<div id="homeContainer" class="container slim" role="main">
 		<header>
-			<a href="<?php echo $this->Html->url('./');?>" id="logo">
+			<a href="<?php echo $this->Html->url('/');?>" id="logo">
 				<?php echo $this->Html->image('logo.png', array('alt'=>'Haikwitter')); ?>
 			</a>
 		</header>
