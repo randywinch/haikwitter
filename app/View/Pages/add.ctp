@@ -15,7 +15,8 @@
 						'id'=>'haiku1',
 						'label'=>false,
 						'placeholder'=>'Enter five syllables',
-						'div'=>false
+						'div'=>false,
+						'error'=>false
 						)
 					);
 				?>
@@ -26,7 +27,8 @@
 						'id'=>'haiku2',
 						'label'=>false,
 						'placeholder'=>'Enter seven syllables',
-						'div'=>false
+						'div'=>false,
+						'error'=>false
 						)
 					);
 				?>
@@ -38,7 +40,8 @@
 						'id'=>'haiku3',
 						'label'=>false,
 						'placeholder'=>'Enter five syllables',
-						'div'=>false
+						'div'=>false,
+						'error'=>false
 						)
 					);
 				?>
