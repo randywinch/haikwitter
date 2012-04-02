@@ -1,7 +1,7 @@
 /*-------------------------------------------------------------------------
 
 	Typography Definitions
-	
+
 -------------------------------------------------------------------------*/
 
 /*	Basic Styles
@@ -76,7 +76,7 @@ h6 {
 /*-------------------------------------------------------------------------
 
 	Header Definitions
-	
+
 -------------------------------------------------------------------------*/
 #logo {
 	display: block;
@@ -97,7 +97,7 @@ h6 {
 /*-------------------------------------------------------------------------
 
 	Footer Definitions
-	
+
 -------------------------------------------------------------------------*/
 #global-footer {
 	position: absolute;
@@ -119,7 +119,7 @@ h6 {
 /*-------------------------------------------------------------------------
 
 	Layout Definitions
-	
+
 -------------------------------------------------------------------------*/
 .container {
 	width: 960px;
@@ -127,8 +127,8 @@ h6 {
 	background: #f1efd7;
 }
 .container.slim {
-	width: 290px;
-	padding: 0 55px 50px;
+	width: 350px;
+	padding: 0 25px 50px;
 }
 
 
@@ -207,7 +207,7 @@ input:-moz-placeholder {
 .button {
 	position: relative;
 	width: 162px;
-	right: -75px;
+	right: -45px;
 	top: 0;
 	float: right;
 	padding: 8px 10px;
@@ -215,17 +215,19 @@ input:-moz-placeholder {
 	background: #d81670;
 	color: #fff;
 	font-family: 'Gudea', sans-serif;
+	text-align: left;
+	text-decoration: none;
 }
-.button::after {  
+.button::after {
 	content: ' ';
-	position: absolute;  
+	position: absolute;
 	width: 0;
-	height: 0;  
+	height: 0;
 	right: 0;
-	top: 100%;  
-	border-width: 5px 10px;  
+	top: 100%;
+	border-width: 5px 10px;
 	border-style: solid;
-	border-color: #3f0544 transparent transparent #3f0544;  
+	border-color: #3f0544 transparent transparent #3f0544;
 }
 .button:hover {
 	background: #bc045a;
@@ -266,7 +268,7 @@ input:-moz-placeholder {
 /*-------------------------------------------------------------------------
 
 	Details Page Definitions
-	
+
 -------------------------------------------------------------------------*/
 #detailsContainer {
 	background: rgba(170, 169, 141, 0.85);
@@ -279,6 +281,6 @@ input:-moz-placeholder {
 }
 .haiku-detail {
 	margin: 0 0 80px;
-	font-size: 30px;
+	font-size: 28px;
 	color: #fff;
 }

@@ -77,8 +77,40 @@ class PagesController extends AppController {
 	        ));
 		}
 
-		$uselessWords = array('a','the','this','of','for','to','from','at','with','where','when','what',' ');
-		$haikuArray = array_diff(array_unique(array_merge(split(' ', $entry['Haiku']['line_1']),split(' ', $entry['Haiku']['line_2']),split(' ', $entry['Haiku']['line_3']))), $uselessWords);
+		$uselessWords = array(
+			'a',
+			'the',
+			'this',
+			'of',
+			'for',
+			'to',
+			'from',
+			'at',
+			'with',
+			'where',
+			'when',
+			'what',
+			'is',
+			'my',
+			'by',
+			' '
+		);
+		$haikuArray = array_diff(
+			explode('_',
+				strtolower(
+					join('_',
+						array_unique(
+							array_merge(
+								split(' ', $entry['Haiku']['line_1']),
+								split(' ', $entry['Haiku']['line_2']),
+								split(' ', $entry['Haiku']['line_3'])
+							)
+						)
+					)
+				)
+			), $uselessWords
+		);
+
 		$query = $haikuArray[array_rand($haikuArray)];
 
 		$apiKey = '9807afb683f16f992c1a2d2ee8bf2b49';

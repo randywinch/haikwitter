@@ -16,6 +16,3 @@
 			<a id="submitHaiku" class="button" href="<?php echo $this->Html->url('/view/' . $next['Haiku']['id']); ?>">randomize <span class="arrow"></span></a>
 		</div>
 	</div>
-
-
-	<!-- wider padding, smaller font, point buttons both directions -->

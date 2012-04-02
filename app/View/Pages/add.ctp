@@ -14,7 +14,7 @@
 				<?php echo $this->Form->input('Haiku.line_1', array(
 						'id'=>'haiku1',
 						'label'=>false,
-						'placeholder'=>'Enter five words',
+						'placeholder'=>'Enter five syllables',
 						'div'=>false
 						)
 					);
@@ -25,7 +25,7 @@
 				<?php echo $this->Form->input('Haiku.line_2', array(
 						'id'=>'haiku2',
 						'label'=>false,
-						'placeholder'=>'Enter seven words',
+						'placeholder'=>'Enter seven syllables',
 						'div'=>false
 						)
 					);
@@ -37,7 +37,7 @@
 				<?php echo $this->Form->input('Haiku.line_3', array(
 						'id'=>'haiku3',
 						'label'=>false,
-						'placeholder'=>'Enter five words',
+						'placeholder'=>'Enter five syllables',
 						'div'=>false
 						)
 					);
@@ -45,7 +45,7 @@
 				<span id="haiku3Count" class="word-count" data-limit="5">5</span>
 			</p>
 			<p>
-				<button id="submitHaiku" class="button">express yourself <span class="arrow"></span></button>
+				<button id="submitHaiku" class="button long-button">express yourself <span class="arrow"></span></button>
 			</p>
 			<div class="clearfix"></div>
 		<?php echo $this->Form->end(); ?>
