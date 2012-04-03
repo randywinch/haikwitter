@@ -17,7 +17,7 @@
 		</div>
 		<div class="social-container clearfix">
 			<div class="twitter-container inner-social-container">
-				<a href="https://twitter.com/share" class="twitter-share-button" data-text="<?php echo $entry['Haiku']['line_1'] . '<br>' . $entry['Haiku']['line_2'] . '<br>' . $entry['Haiku']['line_3'];?>" data-via="haikwitter" data-hashtags="haikwitter">Tweet</a>
+				<a href="https://twitter.com/share" class="twitter-share-button" data-text="<?php echo $entry['Haiku']['line_1'] . " " . $entry['Haiku']['line_2'] . " " . $entry['Haiku']['line_3'];?>" data-via="haikwitter" data-hashtags="haikwitter">Tweet</a>
 			</div>
 			<div class="google-plus-container inner-social-container">
 				<div class="g-plusone" data-annotation="none" data-href="http://haikwitter.com"></div>
