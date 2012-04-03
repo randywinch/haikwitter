@@ -121,7 +121,7 @@ class PagesController extends AppController {
 
 		$apiKey = '9807afb683f16f992c1a2d2ee8bf2b49';
 
-		$search = 'http://www.flickr.com/services/rest/?method=flickr.photos.search&safe_search=1&tag_mode=any&api_key=' . $apiKey . '&tags=' . str_replace('%2C',',',urlencode($query)) . '&license=7&per_page=50&format=php_serial';
+		$search = 'http://www.flickr.com/services/rest/?method=flickr.photos.search&safe_search=1&tag_mode=any&api_key=' . $apiKey . '&tags=' . str_replace('%2C',',',urlencode($query)) . '&license=7&per_page=1&format=php_serial';
 
 
 		$ch = curl_init($search);
@@ -131,7 +131,7 @@ class PagesController extends AppController {
 		$response 		= curl_exec($ch);
 
 		$result = unserialize($response);
-		pr($response);
+		pr($result);
 		if(!empty($result) && !empty($result['photos']['photo'])){
 			$id = array_rand($result['photos']['photo'],1);
 			$resultURL = "http://farm" . $result['photos']['photo'][$id]['farm'] . ".static.flickr.com/" . $result['photos']['photo'][$id]['server'] . "/" . $result['photos']['photo'][$id]['id'] . "_" . $result['photos']['photo'][$id]['secret'] . "_b.jpg";
