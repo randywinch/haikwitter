@@ -84,6 +84,8 @@ class PagesController extends AppController {
 			'of',
 			'for',
 			'to',
+			'that',
+			'there',
 			'from',
 			'at',
 			'with',
@@ -93,6 +95,10 @@ class PagesController extends AppController {
 			'is',
 			'my',
 			'by',
+			'too',
+			'are',
+			'they',
+			'then',
 			' '
 		);
 		$haikuArray = array_diff(
@@ -115,12 +121,19 @@ class PagesController extends AppController {
 
 		$apiKey = '9807afb683f16f992c1a2d2ee8bf2b49';
 
-		$search = 'http://flickr.com/services/rest/?method=flickr.photos.search&api_key=' . $apiKey . '&text=' . urlencode($query) . '&per_page=1&format=php_serial';
+		$search = 'http://www.flickr.com/services/rest/?method=flickr.photos.search&safe_search=1&tag_mode=any&api_key=' . $apiKey . '&tags=' . str_replace('%2C',',',urlencode($query)) . '&per_page=50&format=php_serial';
 
-		$result = file_get_contents($search);
-		$result = unserialize($result);
+
+		$ch = curl_init($search);
+		$timeout = 15; // set to zero for no timeout  
+		curl_setopt ($ch, CURLOPT_RETURNTRANSFER, 1);  
+		curl_setopt ($ch, CURLOPT_CONNECTTIMEOUT, $timeout);  
+		$response 		= curl_exec($ch);  
+
+		$result = unserialize($response);
 		if(!empty($result) && !empty($result['photos']['photo'])){
-			$resultURL = "http://farm" . $result['photos']['photo'][0]['farm'] . ".static.flickr.com/" . $result['photos']['photo'][0]['server'] . "/" . $result['photos']['photo'][0]['id'] . "_" . $result['photos']['photo'][0]['secret'] . "_b.jpg";
+			$id = array_rand($result['photos']['photo'],1);
+			$resultURL = "http://farm" . $result['photos']['photo'][$id]['farm'] . ".static.flickr.com/" . $result['photos']['photo'][$id]['server'] . "/" . $result['photos']['photo'][$id]['id'] . "_" . $result['photos']['photo'][$id]['secret'] . "_b.jpg";
 			$this->set(compact('resultURL', 'query') );
 		}
 

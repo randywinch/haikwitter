@@ -38,4 +38,27 @@
 	*		// This is just a sample of a function setup
 	*	}
 	*******************************************************************/
+	function checkCount(e){
+		var $input = $(e.currentTarget);
+
+		if( (e.type=='blur' || (e.type=='keypress' && e.which == 32)) && $input.val().length>0){
+			$.ajax('/haikwitter.com/pages/count/' + $input.val()).done(function(sc){
+				console.log(sc);
+				var sc = parseInt(sc);
+				var $countlabel = $input.siblings('span');
+				var mc = parseInt($countlabel.attr('data-limit'));
+				$countlabel.text(sc);
+				if( sc > mc ){
+					$countlabel.addClass('max-count');
+				} else {
+					$countlabel.removeClass('max-count');
+				}
+			} );
+		}
+	}
+	$('input[type=text]').on('keypress',checkCount);
+	$('input[type=text]').on('blur',checkCount);
+
+
+
 })(jQuery, this, document);

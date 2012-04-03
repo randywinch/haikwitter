@@ -74,11 +74,7 @@ $cakeDescription = __d('cake_dev', 'Haikwitter!');
 
 		<footer id="global-footer">
 			<p>
-				Copyright &copy; 2012 The 1st Movement LLC. All Rights Reserved.
-				<br>
-				Coded with care by Matt Webb, Randy Winch and Jake Gibbons :)
-				<br>
-				Designed by: Noah Dempewolf
+				Copyright &copy; 2012 | Built during <a href="http://www.developdenver.org">Develop Denver 1.0</a> by <a href="http://www.twitter.com/liquidlev">Randy</a>, <a href="http://www.twitter.com/creatify_me">Matt</a>, <a href="http://www.twitter.com/jayseeg">Jake</a> and Noah
 			</p>
 		</footer>
 	</div>
@@ -89,6 +85,7 @@ $cakeDescription = __d('cake_dev', 'Haikwitter!');
 	<!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline -->
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 	<script>window.jQuery || document.write('<script src="js/libs/jquery-1.7.1.min.js"><\/script>')</script>
+	<script src="<?php echo $this->Html->url("/js/script.js"); ?>"></script>
 
 	<script>
 		var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview'],['_trackPageLoadTime']];

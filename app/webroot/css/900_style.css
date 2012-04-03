@@ -108,9 +108,16 @@ h6 {
 #global-footer p {
 	text-align:center;
 	color:#ffffff;
-	text-shadow:1px 1px 1px #000;
+	text-shadow:1px 1px 3px #000;
+	font-size:12px
 }
-
+#global-footer a {
+	text-decoration:none;
+	color:#fff;
+}
+#global-footer a:hover {
+	text-decoration:underline;
+}
 
 
 
@@ -210,6 +217,9 @@ input.form-error {
 	color: #a7a588;
 	text-align: center;
 }
+.max-count {
+	border-top-color: red;
+}
 .button-container {
 	height: 45px;
 }
@@ -290,6 +300,6 @@ input.form-error {
 }
 .haiku-detail {
 	margin: 0 0 80px;
-	font-size: 28px;
+	font-size: 24px;
 	color: #fff;
 }
