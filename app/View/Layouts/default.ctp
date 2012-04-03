@@ -50,6 +50,13 @@ $cakeDescription = __d('cake_dev', 'Haikwitter!');
 	?>
 
 	<meta name="author" content="Matt Webb, Randy Winch and Jake Gibbons">
+	<meta property="og:title" content="haikwitter" />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="http://haikwitter.com" />
+	<meta property="og:image" content="http://haikwitter.com/img/facebook.png" />
+	<meta property="og:site_name" content="haikwitter" />
+	<meta property="og:description"
+		  content="<?php echo 'haikwitter' . (isset($entry) ? (': ' . $entry['Haiku']['line_1'] . " " . $entry['Haiku']['line_2'] . " " . $entry['Haiku']['line_3']) : (', you know, for kids')); ?>"/>
 
 	<link href="http://fonts.googleapis.com/css?family=Gudea" rel="stylesheet">
 
