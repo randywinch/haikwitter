@@ -42,7 +42,7 @@
 		var $input = $(e.currentTarget);
 
 		if( (e.type=='blur' || (e.type=='keypress' && e.which == 32)) && $input.val().length>0){
-			$.ajax('/' + $input.val()).done(function(sc){
+			$.ajax('/pages/count/' + $input.val()).done(function(sc){
 				console.log(sc);
 				var sc = parseInt(sc);
 				var $countlabel = $input.siblings('span');
