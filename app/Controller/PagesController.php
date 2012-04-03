@@ -121,14 +121,14 @@ class PagesController extends AppController {
 
 		$apiKey = '9807afb683f16f992c1a2d2ee8bf2b49';
 
-		$search = 'http://www.flickr.com/services/rest/?method=flickr.photos.search&safe_search=1&tag_mode=any&api_key=' . $apiKey . '&tags=' . str_replace('%2C',',',urlencode($query)) . '&per_page=50&format=php_serial';
+		$search = 'http://www.flickr.com/services/rest/?method=flickr.photos.search&safe_search=1&tag_mode=any&api_key=' . $apiKey . '&tags=' . str_replace('%2C',',',urlencode($query)) . '&license=7&per_page=50&format=php_serial';
 
 
 		$ch = curl_init($search);
-		$timeout = 15; // set to zero for no timeout  
-		curl_setopt ($ch, CURLOPT_RETURNTRANSFER, 1);  
-		curl_setopt ($ch, CURLOPT_CONNECTTIMEOUT, $timeout);  
-		$response 		= curl_exec($ch);  
+		$timeout = 15; // set to zero for no timeout
+		curl_setopt ($ch, CURLOPT_RETURNTRANSFER, 1);
+		curl_setopt ($ch, CURLOPT_CONNECTTIMEOUT, $timeout);
+		$response 		= curl_exec($ch);
 
 		$result = unserialize($response);
 		if(!empty($result) && !empty($result['photos']['photo'])){
