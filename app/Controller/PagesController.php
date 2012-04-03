@@ -99,6 +99,7 @@ class PagesController extends AppController {
 			'are',
 			'they',
 			'then',
+			'and',
 			' '
 		);
 
