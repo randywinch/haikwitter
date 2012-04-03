@@ -22,11 +22,11 @@
 			<div class="google-plus-container inner-social-container">
 				<div class="g-plusone" data-annotation="none" data-href="http://haikwitter.com"></div>
 			</div>
-			<div class="facebook-container inner-social-container">
-				<div class="fb-like" data-href="http://haikwitter.com" data-send="true" data-layout="button_count" data-width="110" data-show-faces="false" data-font="arial"></div>
-			</div>
 			<div class="stumbleupon-container inner-social-container">
 				<su:badge layout="2"></su:badge>
+			</div>
+			<div class="facebook-container inner-social-container">
+				<div class="fb-like" data-href="http://haikwitter.com" data-send="true" data-layout="button_count" data-width="110" data-show-faces="false" data-font="arial"></div>
 			</div>
 		</div>
 	</div>
