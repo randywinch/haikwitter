@@ -6,6 +6,8 @@
 * 	  visible outside of it
 **********************************************************************/
 (function($, window, document, undefined){
+	var WEBROOT = $('body').attr('data-webroot');
+
 	/*********************************************************************
 	*	On Window Load:
 	*	Put functions that need invoked after the Page is done loading
@@ -42,8 +44,7 @@
 		var $input = $(e.currentTarget);
 
 		if( (e.type=='blur' || (e.type=='keypress' && e.which == 32)) && $input.val().length>0){
-			$.ajax('/pages/count/' + $input.val()).done(function(sc){
-				console.log(sc);
+			$.ajax(WEBROOT + 'pages/count/' + $input.val()).done(function(sc){
 				var sc = parseInt(sc);
 				var $countlabel = $input.siblings('span');
 				var mc = parseInt($countlabel.attr('data-limit'));

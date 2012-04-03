@@ -58,7 +58,7 @@ $cakeDescription = __d('cake_dev', 'Haikwitter!');
 		 Create your own custom Modernizr build: www.modernizr.com/download/ -->
 	<script src="js/libs/modernizr-2.5.2.min.js"></script>
 </head>
-	<body>
+	<body data-webroot="<?php echo $this->Html->url('/');?>">
 	<!-- This is incase a user doesn't have JS enabled on their browser -->
 	<noscript>
 		<div class="js-disabled">
