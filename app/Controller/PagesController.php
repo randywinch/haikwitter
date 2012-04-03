@@ -169,13 +169,13 @@ class PagesController extends AppController {
 	}
 
 	public function count($text){
+		$this->layout = false;
+		$this->autoRender = false;
+
 		echo $this->_syllables($text);
 	}
 
 	private function _syllables($text){
-		$this->layout = false;
-		$this->autoRender = false;
-
 		$text = strip_tags(urldecode($text));
 
         $statistics = new TextStatistics;
