@@ -20,16 +20,16 @@ $cakeDescription = __d('cake_dev', 'Haikwitter!');
 ?>
 <!doctype html>
 <?php if(isset($resultURL)){
-		echo "<html lang='en' class='no-js full-background' style='background-image: url({$resultURL});'>";
+		echo "<html itemscope itemtype='http://schema.org/Product' lang='en' class='no-js full-background' style='background-image: url({$resultURL});'>";
 	} else {
-		echo "<html lang='en' class='no-js'>";
+		echo "<html itemscope itemtype='http://schema.org/Product' lang='en' class='no-js'>";
 	};
 ?>
 <head>
 	<meta charset="utf-8">
 
 	<title>
-		<?php echo $cakeDescription ?> 
+		<?php echo $cakeDescription ?>
 		<?php //echo $title_for_layout; ?>
 	</title>
 

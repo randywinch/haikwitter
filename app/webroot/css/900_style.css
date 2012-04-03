@@ -141,7 +141,7 @@ h6 {
 }
 .container.slim {
 	width: 360px;
-	padding: 0 20px 50px;
+	padding: 0 20px 25px;
 }
 
 
@@ -302,4 +302,27 @@ input.form-error {
 	margin: 0 0 80px;
 	font-size: 24px;
 	color: #fff;
+}
+.social-container {
+	margin-top: 25px;
+}
+.inner-social-container {
+	display: inline-block;
+}
+.twitter-container {
+	width: 80px;
+}
+.google-plus-container {
+	width: 42px;
+	position: relative;
+	top: 2px;
+}
+.facebook-container {
+	position: relative;
+	top: -4px;
+	width: 109px;
+}
+.stumbleupon-container {
+	position: relative;
+	top: -1px;
 }
