@@ -101,6 +101,7 @@ class PagesController extends AppController {
 			'then',
 			' '
 		);
+
 		$haikuArray = array_diff(
 			explode('_',
 				strtolower(
@@ -131,14 +132,13 @@ class PagesController extends AppController {
 		$response 		= curl_exec($ch);
 
 		$result = unserialize($response);
-		pr($result);
+
 		if(!empty($result) && !empty($result['photos']['photo'])){
 			$id = array_rand($result['photos']['photo'],1);
 			$resultURL = "http://farm" . $result['photos']['photo'][$id]['farm'] . ".static.flickr.com/" . $result['photos']['photo'][$id]['server'] . "/" . $result['photos']['photo'][$id]['id'] . "_" . $result['photos']['photo'][$id]['secret'] . "_b.jpg";
-			$this->set(compact('resultURL', 'query') );
+			$linkBack = "http://www.flickr.com/photos/" . $result['photos']['photo'][$id]['owner'] . "/" . $result['photos']['photo'][$id]['id'] . "/";
+			$this->set(compact('resultURL', 'query', 'linkBack') );
 		}
-
-
 
 		$next = $this->Haiku->find('first',array(
 			'conditions' => array(
@@ -147,7 +147,6 @@ class PagesController extends AppController {
             ),
             'order' => 'rand()'
         ));
-
 
         $this->set('entry',$entry);
         $this->set('next',$next);

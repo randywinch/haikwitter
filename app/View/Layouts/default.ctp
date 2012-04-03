@@ -83,6 +83,11 @@ $cakeDescription = __d('cake_dev', 'Haikwitter!');
 			<p>
 				Copyright &copy; 2012 | Built during <a href="http://www.developdenver.org">Develop Denver 1.0</a> by <a href="http://www.twitter.com/liquidlev">Randy</a>, <a href="http://www.twitter.com/creatify_me">Matt</a>, <a href="http://www.twitter.com/jayseeg">Jake</a> and Noah
 			</p>
+			<?php if(isset($linkBack)): ?>
+				<p>
+					Random photo pulled from flickr.com, <a href="<?php echo $linkBack ; ?>" title="Original photo on flickr.com" target="_blank">click here to view</a>.
+				</p>
+			<?php endif; ?>
 		</footer>
 	</div>
 
@@ -95,18 +100,16 @@ $cakeDescription = __d('cake_dev', 'Haikwitter!');
 	<script src="<?php echo $this->Html->url("/js/script.js"); ?>"></script>
 
 	<script type="text/javascript">
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-2412799-9']);
+		_gaq.push(['_trackPageview']);
 
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-2412799-9']);
-  _gaq.push(['_trackPageview']);
-
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-
-</script>
+		(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+	</script>
 
 	<!-- Prompt IE 6 users to install Chrome Frame. Remove this if you want to support IE 6.
 		chromium.org/developers/how-tos/chrome-frame-getting-started -->
