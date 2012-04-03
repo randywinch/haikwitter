@@ -131,6 +131,7 @@ class PagesController extends AppController {
 		$response 		= curl_exec($ch);
 
 		$result = unserialize($response);
+		pr($response);
 		if(!empty($result) && !empty($result['photos']['photo'])){
 			$id = array_rand($result['photos']['photo'],1);
 			$resultURL = "http://farm" . $result['photos']['photo'][$id]['farm'] . ".static.flickr.com/" . $result['photos']['photo'][$id]['server'] . "/" . $result['photos']['photo'][$id]['id'] . "_" . $result['photos']['photo'][$id]['secret'] . "_b.jpg";
