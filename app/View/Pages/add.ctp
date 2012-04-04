@@ -47,9 +47,13 @@
 				?>
 				<span id="haiku3Count" class="word-count" data-limit="5">5</span>
 			</p>
-			<p>
+			<p class="clearfix submit-container">
 				<button id="submitHaiku" class="button long-button">express yourself <span class="arrow"></span></button>
 			</p>
+			<div class="clearfix button-container">
+				<a id="submitHaiku" class="button purple" href="<?php echo $this->Html->url('/view/' . $next['Haiku']['id']); ?>">random haikwitter <span class="arrow"></span></a>
+			</div>
+			<p class="syllable-warning">*Please be patient, the 5th graders we hired to count syllables aren't always accurate.</p>
 			<div class="clearfix"></div>
 		<?php echo $this->Form->end(); ?>
 	</div>

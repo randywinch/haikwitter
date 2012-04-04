@@ -204,7 +204,7 @@ input.form-error {
 
 -------------------------------------------------------------------------*/
 #createHaiku {
-	height: 320px;
+	height: 410px;
 }
 #createHaiku p {
 	margin: 0 0 50px;
@@ -236,6 +236,9 @@ input.form-error {
 	font-family: 'Gudea', sans-serif;
 	text-align: left;
 	text-decoration: none;
+}
+.long-button {
+	width: 182px;
 }
 .button::after {
 	content: ' ';
@@ -269,6 +272,14 @@ input.form-error {
 	border-top: 4px solid transparent;
 	border-bottom: 4px solid transparent;
 	border-left: 12px solid #fff;
+}
+#createHaiku .submit-container {
+	margin-bottom: 10px;
+}
+#createHaiku .syllable-warning {
+	margin-top: 20px;
+	color: #6d6e71;
+	font-family: 'Gudea', sans-serif;
 }
 
 

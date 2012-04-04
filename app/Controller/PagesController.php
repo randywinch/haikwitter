@@ -101,11 +101,14 @@ class PagesController extends AppController {
 			'then',
 			'and',
 			'me',
+			'be',
 			'if',
 			'it',
 			'am',
 			'in',
 			'do',
+			'on',
+			'mr',
 			'through',
 			'you',
 			'fuck',
@@ -188,6 +191,25 @@ class PagesController extends AppController {
 	            $this->redirect('/view/'. $data['Haiku']['id']);
 	        }
 	    }
+
+		$entry = $this->Haiku->find('first',array(
+			'conditions' => array(
+			    'Haiku.active'=>1,
+            ),
+            'order' => 'rand()',
+            'limit' => '1'
+        ));
+
+		$next = $this->Haiku->find('first',array(
+			'conditions' => array(
+			    'Haiku.active'=>1,
+			    'Haiku.id <>' => $entry['Haiku']['id']
+            ),
+            'order' => 'rand()'
+        ));
+
+        $this->set('next',$next);
+        $this->set('entry',$entry);
 	}
 
 	public function count($text){
