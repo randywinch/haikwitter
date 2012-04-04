@@ -204,10 +204,10 @@ input.form-error {
 
 -------------------------------------------------------------------------*/
 #createHaiku {
-	height: 410px;
+	height: 350px;
 }
 #createHaiku p {
-	margin: 0 0 50px;
+	margin: 0 0 30px;
 }
 .word-count {
 	display: inline-block;
@@ -280,6 +280,9 @@ input.form-error {
 	margin-top: 20px;
 	color: #6d6e71;
 	font-family: 'Gudea', sans-serif;
+}
+.home-logo {
+	width: 180px;
 }
 
 
