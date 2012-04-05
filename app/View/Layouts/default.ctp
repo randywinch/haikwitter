@@ -28,10 +28,7 @@ $cakeDescription = __d('cake_dev', 'Haikwitter!');
 <head>
 	<meta charset="utf-8">
 
-	<title>
-		<?php echo $cakeDescription ?>
-		<?php //echo $title_for_layout; ?>
-	</title>
+	<title><?php echo $cakeDescription ?><?php //echo $title_for_layout; ?></title>
 
 	<?php
 		echo $this->Html->meta('icon');
@@ -63,7 +60,7 @@ $cakeDescription = __d('cake_dev', 'Haikwitter!');
 	<!-- All JavaScript at the bottom, except this Modernizr build.
 		 Modernizr enables HTML5 elements & feature detects for optimal performance.
 		 Create your own custom Modernizr build: www.modernizr.com/download/ -->
-	<script src="js/libs/modernizr-2.5.2.min.js"></script>
+	<script src="<?php echo $this->Html->url("/js/libs/modernizr-2.5.2.min.js"); ?>"></script>
 </head>
 	<body data-webroot="<?php echo $this->Html->url('/');?>">
 	<!-- This is incase a user doesn't have JS enabled on their browser -->
