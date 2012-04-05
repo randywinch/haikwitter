@@ -22,9 +22,6 @@
 			<div class="google-plus-container inner-social-container">
 				<div class="g-plusone" data-annotation="none" data-href="http://haikwitter.com"></div>
 			</div>
-			<div class="stumbleupon-container inner-social-container">
-				<su:badge layout="2"></su:badge>
-			</div>
 			<div class="facebook-container inner-social-container">
 				<div class="fb-like" data-href="http://haikwitter.com" data-send="true" data-layout="button_count" data-width="110" data-show-faces="false" data-font="arial"></div>
 			</div>
@@ -53,11 +50,4 @@
 			js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
 			fjs.parentNode.insertBefore(js, fjs);
 		}(document, 'script', 'facebook-jssdk'));
-	</script>
-	<script type="text/javascript">
-		(function() {
-			var li = document.createElement('script'); li.type = 'text/javascript'; li.async = true;
-			li.src = window.location.protocol + '//platform.stumbleupon.com/1/widgets.js';
-			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(li, s);
-		})();
 	</script>
