@@ -1,0 +1,19 @@
+This project was created as part of the Develop Denver 1.0 sessions.
+
+Authors:
+Matt Webb
+Randy Winch
+Jake Gibbons
+Noah Dempewolf
+
+INSTALLING
+==========
+
+You will need to add the following files from CakePHP 2.1 Installation:
+app > config > core.php
+app > config > database.php
+app > tmp
+
+Install DB SQL file from app > Database
+
+Update app > config > database.php
