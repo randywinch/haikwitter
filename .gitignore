@@ -8,3 +8,4 @@
 /dist
 .DS_Store
 tags
+sftp-config.json
