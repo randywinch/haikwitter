@@ -27,10 +27,11 @@
  */
 	Router::connect('/', array('controller' => 'pages', 'action' => 'add'));
 	Router::connect('/view/*', array('controller' => 'pages', 'action' => 'view'));
-
+	Router::connect('/flags/flag', array('controller' => 'pages', 'action' => 'flag'));
+	Router::connect('/flags/ajaxFlag', array('controller' => 'pages', 'action' => 'ajaxFlag'));
 
 /**
- * Load all plugin routes.  See the CakePlugin documentation on 
+ * Load all plugin routes.  See the CakePlugin documentation on
  * how to customize the loading of plugin routes.
  */
 	CakePlugin::routes();

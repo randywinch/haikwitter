@@ -334,10 +334,18 @@ input.form-error {
 .facebook-container {
 	position: relative;
 	top: -4px;
-	width: 109px;
+	width: 132px;
 }
 .stumbleupon-container {
 	position: relative;
 	top: -1px;
 	width: 69px;
+}
+#FlagFlagForm {
+	width: 70px;
+}
+.flag-submit {
+	border: 0;
+	width: 70px;
+	display: inline;
 }
