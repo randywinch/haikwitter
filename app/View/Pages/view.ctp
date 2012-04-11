@@ -27,16 +27,11 @@
 			</div>
 			<div class="inner-social-container">
 				<?php
-					if($flags == 0){
-						$flagSubmit = '';
-					} else {
-						$flagSubmit = ' ' . $flags;
-					}
 					echo $this->Form->create('Flag', array('url'=>'/pages/flag'));
 					echo $this->Form->hidden('user_ip', array('value'=>$userIP));
 					echo $this->Form->hidden('haikwitter_id', array('value'=>$entry['Haiku']['id']));
-					echo '<div class="hidden ajaxSubmit"><a href="javascript:void(1);" title="Flag this post as innappropriate">flag<span class="flag-count">' . $flagSubmit . '</span></a></div>';
-					echo $this->Form->end(array('label'=>'Flag' . $flagSubmit, 'name'=>'flag', 'div'=>false, 'class'=>'flag-submit flag'));
+					echo '<div class="hidden ajaxSubmit"><a href="javascript:void(1);" title="Flag this post as innappropriate">flag</a></div>';
+					echo $this->Form->end(array('label'=>'Flag', 'name'=>'flag', 'div'=>false, 'class'=>'flag-submit flag'));
 				?>
 			</div>
 		</div>

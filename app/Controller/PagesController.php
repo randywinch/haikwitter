@@ -196,7 +196,7 @@ var $components = array(
 
         $this->set('entry',$entry);
         $this->set('next',$next);
-        $this->set(compact('flags', 'userIP'));
+        $this->set(compact('userIP'));
 	}
 
 	public function add(){
