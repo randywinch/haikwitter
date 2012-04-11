@@ -87,7 +87,7 @@
 			/*$form.submit();*/
 			$.ajax({
 				type: 	'POST',
-				url: 	'../flags/flag',
+				url: 	WEBROOT + 'pages/flag',
 				data: 	data,
 				success: function(data){
 					console.log(data);

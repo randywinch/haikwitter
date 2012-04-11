@@ -32,9 +32,9 @@
 					} else {
 						$flagSubmit = ' ' . $flags;
 					}
-					echo $this->Form->create('Flag', array('action'=>'flag'));
-					echo $this->Form->hidden('ip', array('value'=>$userIP));
-					echo $this->Form->hidden('haikwitter', array('value'=>$this->Session->request->params['pass']['0']));
+					echo $this->Form->create('Flag', array('url'=>'/pages/flag'));
+					echo $this->Form->hidden('user_ip', array('value'=>$userIP));
+					echo $this->Form->hidden('haikwitter_id', array('value'=>$entry['Haiku']['id']));
 					echo '<div class="hidden ajaxSubmit"><a href="javascript:void(1);" title="Flag this post as innappropriate">flag<span class="flag-count">' . $flagSubmit . '</span></a></div>';
 					echo $this->Form->end(array('label'=>'Flag' . $flagSubmit, 'name'=>'flag', 'div'=>false, 'class'=>'flag-submit flag'));
 				?>
@@ -47,6 +47,3 @@
 
 	<script id="socialDefers"></script>
 	<div id="fb-root"></div>
-
-
-<!-- add flaggin mechanism -->

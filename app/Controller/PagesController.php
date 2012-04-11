@@ -87,6 +87,10 @@ var $components = array(
 	        ));
 		}
 
+		if(empty($entry)){
+			$this->redirect('/view');
+		}
+
 		$flags = count($entry['Flag']);
 
 		$uselessWords = array(
@@ -243,106 +247,52 @@ var $components = array(
 	}
 
 	public function flag(){
+		$this->autoRender = false;
 
 		//check for request
-		if(!empty($this->request->data) || !empty($_POST['data']['Flag'])){
+		if(!empty($this->request->data) && !empty($this->request->data['Flag']['haikwitter_id'])){
 
 			//grab data
-			if(!empty($this->request->data)){
-				$flagHaikwitter = $this->request->data['Flag']['haikwitter'];
-				$flagIP = $this->request->data['Flag']['ip'];
-			} else {
-				$flagHaikwitter = $_POST['data']['Flag']['haikwitter'];
-				$flagIP = $_POST['data']['Flag']['ip'];
-			}
-
-			//serialize data
-			$data = array();
-			$data['Flag'] = array(
-				'haikwitter_id' => $flagHaikwitter,
-				'user_ip' => $flagIP
-			);
+			$flagHaikwitter = $this->request->data['Flag']['haikwitter_id'];
+			$flagIP = $this->request->data['Flag']['user_ip'];
 
 			//keep an eye on whether they have already flagged this item in this session (I don't know what what am is doing, array_merge?)
-			if ($this->Session->check('Flagged')) {
+			if ($this->Session->check('Flagged.' . $flagHaikwitter)) {
 
-			    //checking for whether this haiku has been flagged
-				if(in_array($flagHaikwitter, $this->Session->read('Flagged'))){
-					$alreadyFlaggedThisSession = true;
-				} else {
-					$alreadyFlaggedThisSession = false;
-				}
-
-			    $this->Session->write('Flagged', am(
-			       $this->Session->read('Flagged'), array($flagHaikwitter)
-			    ));
-			} else {
-			    $this->Session->write('Flagged', array($flagHaikwitter));
-			}
-
-			//block flagging if user has already flagged this item during this session
-			if($alreadyFlaggedThisSession != true){
-
-				//save data
-				$this->Flag->save($data);
-
-				//look for other flags
-				$flag = $this->Flag->find('all',
-					array(
-						'conditions'=>array(
-							'haikwitter_id' => $flagHaikwitter
-						)
-					)
-				);
-
-				//grab haiku
-				$haiku = $this->Haiku->find('first',
-					array(
-						'conditions'=>array(
-							'Haiku.id'=>$flagHaikwitter
-						)
-					)
-				);
-
-				//set haiku as inactive if there are now three flag requests
-				if(count($flag) == 3){
-					$haiku['Haiku']['active'] = 0;
-					$this->Haiku->save($haiku);
-				}
-			}
-
-			if(!empty($_POST['data']['Flag'])){
-				//return success
-				echo 'success';
+				echo 0;
 				exit;
 			} else {
-				//reload haikwitter page
-				$this->redirect($this->referer(array('flagged'=>true)));
+
+				//save data
+				if($this->Flag->save($this->request->data)){
+
+					//save session variable
+				    $this->Session->write('Flagged.' . $flagHaikwitter, $flagHaikwitter);
+
+					//look for other flags
+					$flag = $this->Flag->find('count',
+						array(
+							'conditions'=>array(
+								'haikwitter_id' => $flagHaikwitter
+							),
+							'contains' => array()
+						)
+					);
+
+					//echoing 1 for successful save
+					echo 1;
+
+					//save
+					if($flag >= 3){
+						$this->Haiku->id = $flagHaikwitter;
+						$this->Haiku->saveField('active', 0);
+					}
+				} else {
+
+					//echoing 0 for unsuccessful save
+					echo 0;
+				}
 			}
 		}
-	}
-
-	public function ajaxFlag(){
-
-		/*Array
-		(
-		    [_method] => POST
-		    [data] => Array
-		        (
-		            [Flag] => Array
-		                (
-		                    [ip] => 127.0.0.1
-		                    [haikwitter] => a00ae5b51bac
-		                )
-
-		        )
-
-		)*/
-
-		//receive and respond to ajax
-		$return = $_POST['data']['Flag']['ip'];
-
-		echo json_encode($_POST);
-		exit;
 	}
 }
