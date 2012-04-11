@@ -90,7 +90,10 @@
 				url: 	WEBROOT + 'pages/flag',
 				data: 	data,
 				success: function(data){
-					console.log(data);
+					var returnData = $.parseJSON(data);
+					if(typeof returnData !== 'undefined' && returnData.saveError === false){
+						alert('Your flag was not recorded, please try again.');
+					}
 				}
 			});
 		});

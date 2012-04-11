@@ -64,6 +64,9 @@ var $components = array(
 
 	public function view($id=null){
 
+    	//collect userIP
+    	$userIP = $this->RequestHandler->getClientIp();
+
 		//Delete Session
 		/*$this->Session->delete('Flagged');*/
 
@@ -179,7 +182,6 @@ var $components = array(
 			$resultURL = "http://farm" . $result['photos']['photo'][$id]['farm'] . ".static.flickr.com/" . $result['photos']['photo'][$id]['server'] . "/" . $result['photos']['photo'][$id]['id'] . "_" . $result['photos']['photo'][$id]['secret'] . "_b.jpg";
 			$linkBack = "http://www.flickr.com/photos/" . $result['photos']['photo'][$id]['owner'] . "/" . $result['photos']['photo'][$id]['id'] . "/";
 
-        	$userIP = $this->RequestHandler->getClientIp();
 
 			$this->set(compact('resultURL', 'query', 'linkBack', 'userIP') );
 		}
@@ -194,7 +196,7 @@ var $components = array(
 
         $this->set('entry',$entry);
         $this->set('next',$next);
-        $this->set(compact('flags'));
+        $this->set(compact('flags', 'userIP'));
 	}
 
 	public function add(){
@@ -252,14 +254,20 @@ var $components = array(
 		//check for request
 		if(!empty($this->request->data) && !empty($this->request->data['Flag']['haikwitter_id'])){
 
-			//grab data
+			//initialize return data array
+			$return = array();
+
+			//save haiku_id
 			$flagHaikwitter = $this->request->data['Flag']['haikwitter_id'];
-			$flagIP = $this->request->data['Flag']['user_ip'];
 
 			//keep an eye on whether they have already flagged this item in this session (I don't know what what am is doing, array_merge?)
 			if ($this->Session->check('Flagged.' . $flagHaikwitter)) {
 
-				echo 0;
+				$return['flagged'] = false;
+
+				//return data
+				echo json_encode($return);
+
 				exit;
 			} else {
 
@@ -280,19 +288,23 @@ var $components = array(
 					);
 
 					//echoing 1 for successful save
-					echo 1;
+					$return['flagged'] = true;
 
 					//save
 					if($flag >= 3){
 						$this->Haiku->id = $flagHaikwitter;
 						$this->Haiku->saveField('active', 0);
+						$return['state'] = 'deactivated';
 					}
 				} else {
 
 					//echoing 0 for unsuccessful save
-					echo 0;
+					$return['saveError'] = true;
 				}
 			}
+
+			//return data
+			echo json_encode($return);
 		}
 	}
 }
