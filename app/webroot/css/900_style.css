@@ -318,9 +318,12 @@ input.form-error {
 	color: #fff;
 }
 .social-container {
+	position: relative;
 	margin-top: 25px;
 }
 .inner-social-container {
+	position: relative;
+	z-index: 10;
 	display: inline-block;
 }
 .twitter-container {
@@ -333,6 +336,7 @@ input.form-error {
 }
 .facebook-container {
 	position: relative;
+	z-index: 1;
 	top: -4px;
 	width: 132px;
 }
