@@ -368,7 +368,7 @@ input.form-error {
 	color: #fff;
 	font-family: sans-serif;
 	font-size: 11px;
-	line-height: 20px;
+	line-height: 23px;
 	text-decoration: none;
 
 	border-radius: 3px;
@@ -393,7 +393,12 @@ input.flag-button {
 	position: relative;
 	display: inline-block;
 	top: 2px;
-	font-size: 16px;
+	height: 12px;
+	width: 10px;
+	background: url(../img/flag.png) no-repeat left bottom;
+}
+.Flagged span {
+	background-position: left top;
 }
 .Flag,
 input.Flagged {

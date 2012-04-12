@@ -95,7 +95,7 @@
 					}
 					if(typeof returnData !== 'undefined' && returnData.flagged === true){
 						$('div.ajaxSubmit').find('a')
-							.html('Flagged <span>&#9873;</span>')
+							.html('Flagged <span></span>')
 							.removeAttr('href')
 							.removeClass('Flag')
 							.addClass('Flagged');
