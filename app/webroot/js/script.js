@@ -94,7 +94,11 @@
 						alert('Your flag was not recorded, please try again.');
 					}
 					if(typeof returnData !== 'undefined' && returnData.flagged === true){
-						$('div.ajaxSubmit').find('a').html('Flagged \<span\>\&\#9873;\</span\>').removeAttr('href').removeClass('Flag').addClass('Flagged');
+						$('div.ajaxSubmit').find('a')
+							.html('Flagged \<span\>\&\#9873;\</span\>')
+							.removeAttr('href')
+							.removeClass('Flag')
+							.addClass('Flagged');
 					}
 				}
 			});
