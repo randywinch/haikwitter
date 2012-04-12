@@ -84,7 +84,6 @@
 		$ajaxSubmit.on('click', 'a', function(e){
 			e.preventDefault;
 			var data = $form.serialize();
-			/*$form.submit();*/
 			$.ajax({
 				type: 	'POST',
 				url: 	WEBROOT + 'pages/flag',
@@ -93,6 +92,9 @@
 					var returnData = $.parseJSON(data);
 					if(typeof returnData !== 'undefined' && returnData.saveError === false){
 						alert('Your flag was not recorded, please try again.');
+					}
+					if(typeof returnData !== 'undefined' && returnData.flagged === true){
+						$('div.ajaxSubmit').find('a').text('Flagged').removeAttr('href').removeClass('Flag').addClass('Flagged');
 					}
 				}
 			});

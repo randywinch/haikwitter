@@ -70,6 +70,13 @@ var $components = array(
 		//Delete Session
 		/*$this->Session->delete('Flagged');*/
 
+		//collect session save count
+		if($this->Session->check('Flagged.' . $id)){
+			$flagged = true;
+		} else {
+			$flagged = false;
+		}
+
 		//Check for ID
 		if($id != null){
 			$entry = $this->Haiku->find('first',array(
@@ -196,7 +203,7 @@ var $components = array(
 
         $this->set('entry',$entry);
         $this->set('next',$next);
-        $this->set(compact('userIP'));
+        $this->set(compact('userIP', 'flagged'));
 	}
 
 	public function add(){
@@ -249,7 +256,16 @@ var $components = array(
 	}
 
 	public function flag(){
-		$this->autoRender = false;
+
+		//Check for AJAX
+		if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest'){
+
+			$this->autoRender = false;
+			$redirect = false;
+		} else {
+
+			$redirect = true;
+		}
 
 		//check for request
 		if(!empty($this->request->data) && !empty($this->request->data['Flag']['haikwitter_id'])){
@@ -266,7 +282,11 @@ var $components = array(
 				$return['flagged'] = false;
 
 				//return data
-				echo json_encode($return);
+				if(!$redirect){
+					echo json_encode($return);
+				} else {
+					$this->Redirect('/view');
+				}
 
 				exit;
 			} else {
@@ -287,24 +307,32 @@ var $components = array(
 						)
 					);
 
-					//echoing 1 for successful save
+					//returning true for successful save
 					$return['flagged'] = true;
 
-					//save
+					//save inactivated haiku
 					if($flag >= 3){
 						$this->Haiku->id = $flagHaikwitter;
 						$this->Haiku->saveField('active', 0);
 						$return['state'] = 'deactivated';
 					}
-				} else {
 
-					//echoing 0 for unsuccessful save
+					//return data
+					if($redirect){
+						$this->Redirect('/view');
+					}
+				} else {
+					//returning false for unsuccessful save
 					$return['saveError'] = true;
 				}
 			}
 
 			//return data
-			echo json_encode($return);
+			if(!$redirect){
+				echo json_encode($return);
+			} else {
+				$this->Redirect('/view');
+			}
 		}
 	}
 }
