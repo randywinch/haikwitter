@@ -318,10 +318,18 @@ input.form-error {
 	color: #fff;
 }
 .social-container {
+	position: relative;
 	margin-top: 25px;
 }
 .inner-social-container {
+	position: relative;
 	display: inline-block;
+}
+.flag-container {
+	position: relative;
+	display: inline-block;
+	float: right;
+	z-index: 10;
 }
 .twitter-container {
 	width: 80px;
@@ -333,11 +341,75 @@ input.form-error {
 }
 .facebook-container {
 	position: relative;
+	z-index: 1;
 	top: -4px;
-	width: 109px;
+	width: 134px;
 }
 .stumbleupon-container {
 	position: relative;
 	top: -1px;
 	width: 69px;
+}
+#FlagFlagForm {
+	width: 70px;
+}
+.flag-submit {
+	border: 0;
+	width: 70px;
+	display: inline;
+}
+.flag-button {
+	position: relative;
+	display: block;
+	height: 18px;
+	padding: 2px 5px 5px 5px;
+	border-style: solid;
+	border-width: 1px;
+	color: #fff;
+	font-family: sans-serif;
+	font-size: 11px;
+	text-decoration: none;
+
+	border-radius: 3px;
+}
+input.flag-button {
+	position: relative;
+	display: block;
+	height: 27px;
+	width: 46px;
+	padding: 7px 13px 5px 1px;
+	margin: 0;
+	color: #fff;
+	font-family: sans-serif;
+	font-size: 11px;
+
+	-webkit-border-radius: 3px;
+	   -moz-border-radius: 3px;
+			border-radius: 3px;
+
+}
+.flag-button span {
+	position: relative;
+	display: inline-block;
+	top: 2px;
+	font-size: 16px;
+}
+.Flag,
+input.Flagged {
+	background: #D81670;
+	border-top-color: #ED4593;
+	border-right-color: #900E4B;
+	border-bottom-color: #900E4B;
+	border-left-color: #ED4593;
+}
+a.Flagged {
+	background: #A74A9B;
+	border-top-color: #C171B6;
+	border-right-color: #6E3066;
+	border-bottom-color: #6E3066;
+	border-left-color: #C171B6;
+}
+.Flag:hover,
+input.Flagged:hover {
+	background: #bc045a;
 }

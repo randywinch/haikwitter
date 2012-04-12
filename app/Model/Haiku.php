@@ -13,6 +13,11 @@ class Haiku extends AppModel {
 	public $useTable = 'haikus';
 	public $name = 'Haiku';
 
+	public $hasMany = array(
+		'Flag' => array(
+			'foreignKey' => 'haikwitter_id'
+		)
+	);
 
 	public $validate = array(
 		'line_1' => array(

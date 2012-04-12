@@ -26,6 +26,7 @@ App::import('Vendor', 'Text-Statistics/TextStatistics');
 
 
 
+
 /**
  * Static content controller
  *
@@ -36,6 +37,10 @@ App::import('Vendor', 'Text-Statistics/TextStatistics');
  */
 class PagesController extends AppController {
 
+//IP logging
+var $components = array(
+    'RequestHandler'
+);
 /**
  * Controller name
  *
@@ -48,20 +53,34 @@ class PagesController extends AppController {
  *
  * @var array
  */
-	public $helpers = array('Html', 'Session');
+	public $helpers = array('Html', 'Session', 'Js');
 
 /**
  * This controller does not use a model
  *
  * @var array
  */
-	public $uses = array('Haiku');
+	public $uses = array('Haiku', 'Flag');
 
 	public function view($id=null){
+
+    	//collect userIP
+    	$userIP = $this->RequestHandler->getClientIp();
+
+		//Delete Session
+		/*$this->Session->delete('Flagged');*/
+
+		//collect session save count
+		if($this->Session->check('Flagged.' . $id)){
+			$flagged = true;
+		} else {
+			$flagged = false;
+		}
 
 		//Check for ID
 		if($id != null){
 			$entry = $this->Haiku->find('first',array(
+				'contain' => 'Flag',
 				'conditions' => array(
 				    'Haiku.active'=>1,
 				    'Haiku.id' => $id
@@ -69,6 +88,7 @@ class PagesController extends AppController {
 	        ));
 		} else {
 			$entry = $this->Haiku->find('first',array(
+				'contain' => 'Flag',
 				'conditions' => array(
 				    'Haiku.active'=>1,
 	            ),
@@ -76,6 +96,12 @@ class PagesController extends AppController {
 	            'limit' => '1'
 	        ));
 		}
+
+		if(empty($entry)){
+			$this->redirect('/view');
+		}
+
+		$flags = count($entry['Flag']);
 
 		$uselessWords = array(
 			'a',
@@ -162,7 +188,9 @@ class PagesController extends AppController {
 			$id = array_rand($result['photos']['photo'],1);
 			$resultURL = "http://farm" . $result['photos']['photo'][$id]['farm'] . ".static.flickr.com/" . $result['photos']['photo'][$id]['server'] . "/" . $result['photos']['photo'][$id]['id'] . "_" . $result['photos']['photo'][$id]['secret'] . "_b.jpg";
 			$linkBack = "http://www.flickr.com/photos/" . $result['photos']['photo'][$id]['owner'] . "/" . $result['photos']['photo'][$id]['id'] . "/";
-			$this->set(compact('resultURL', 'query', 'linkBack') );
+
+
+			$this->set(compact('resultURL', 'query', 'linkBack', 'userIP') );
 		}
 
 		$next = $this->Haiku->find('first',array(
@@ -175,6 +203,7 @@ class PagesController extends AppController {
 
         $this->set('entry',$entry);
         $this->set('next',$next);
+        $this->set(compact('userIP', 'flagged'));
 	}
 
 	public function add(){
@@ -224,5 +253,86 @@ class PagesController extends AppController {
 
         $statistics = new TextStatistics;
         return $statistics->syllable_count($text);
+	}
+
+	public function flag(){
+
+		//Check for AJAX
+		if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest'){
+
+			$this->autoRender = false;
+			$redirect = false;
+		} else {
+
+			$redirect = true;
+		}
+
+		//check for request
+		if(!empty($this->request->data) && !empty($this->request->data['Flag']['haikwitter_id'])){
+
+			//initialize return data array
+			$return = array();
+
+			//save haiku_id
+			$flagHaikwitter = $this->request->data['Flag']['haikwitter_id'];
+
+			//keep an eye on whether they have already flagged this item in this session (I don't know what what am is doing, array_merge?)
+			if ($this->Session->check('Flagged.' . $flagHaikwitter)) {
+
+				$return['flagged'] = false;
+
+				//return data
+				if(!$redirect){
+					echo json_encode($return);
+				} else {
+					$this->Redirect('/view');
+				}
+
+				exit;
+			} else {
+
+				//save data
+				if($this->Flag->save($this->request->data)){
+
+					//save session variable
+				    $this->Session->write('Flagged.' . $flagHaikwitter, $flagHaikwitter);
+
+					//look for other flags
+					$flag = $this->Flag->find('count',
+						array(
+							'conditions'=>array(
+								'haikwitter_id' => $flagHaikwitter
+							),
+							'contains' => array()
+						)
+					);
+
+					//returning true for successful save
+					$return['flagged'] = true;
+
+					//save inactivated haiku
+					if($flag >= 3){
+						$this->Haiku->id = $flagHaikwitter;
+						$this->Haiku->saveField('active', 0);
+						$return['state'] = 'deactivated';
+					}
+
+					//return data
+					if($redirect){
+						$this->Redirect('/view');
+					}
+				} else {
+					//returning false for unsuccessful save
+					$return['saveError'] = true;
+				}
+			}
+
+			//return data
+			if(!$redirect){
+				echo json_encode($return);
+			} else {
+				$this->Redirect('/view');
+			}
+		}
 	}
 }

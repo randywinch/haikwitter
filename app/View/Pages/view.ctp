@@ -25,6 +25,24 @@
 			<div class="facebook-container inner-social-container">
 				<div class="fb-like" data-href="http://haikwitter.com" data-send="true" data-layout="button_count" data-width="110" data-show-faces="false" data-font="arial"></div>
 			</div>
+			<div class="inner-social-container flag-container">
+				<?php
+					if($flagged){
+						$flag = 'Flagged';
+						$href = '';
+						$span = '&#9873;';
+					} else {
+						$flag = 'Flag';
+						$href = 'href="javascript:void(1);"';
+						$span = '&#9872;';
+					}
+					echo $this->Form->create('Flag', array('url'=>'/pages/flag'));
+					echo $this->Form->hidden('user_ip', array('value'=>$userIP));
+					echo $this->Form->hidden('haikwitter_id', array('value'=>$entry['Haiku']['id']));
+					echo '<div class="hidden ajaxSubmit"><a ' . $href . ' title="Flag this post as innappropriate" class="' . $flag . ' flag-button">' . $flag . ' <span>' . $span . '</span></a></div>';
+					echo $this->Form->end(array('label'=>'Flag', 'name'=>'flag', 'div'=>false, 'class'=>'flag-submit flag flag-button ' . $flag));
+				?>
+			</div>
 		</div>
 	</div>
 

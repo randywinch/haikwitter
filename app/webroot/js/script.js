@@ -62,18 +62,7 @@
 
 	/*******************************************************************
 	*	Artificial Social Defer
-	*		- Just showing function structure
-	*		- If the function has parameters, please list and explain
-	*		  what the parameters are for. NOTE: Params and Param
-	*		  explanations are examples only
-	*	Params:
-	*		@param1 - string - should be the
-	*		@param2 - boolean - heading soughtstreet
-	*
-	*	Function Example:
-	* 	function sampleFunction(param1, param2){
-	*		// This is just a sample of a function setup
-	*	}
+	*		- Injects social script tags in a non blocking manner
 	*******************************************************************/
 	function socialDefer(){
 		var inject = "(function() {	var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true; po.src = 'https://apis.google.com/js/plusone.js'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s); })(); (function(d, s, id) { var js, fjs = d.getElementsByTagName(s)[0]; if (d.getElementById(id)) return; js = d.createElement(s); js.id = id;	js.src = \"//connect.facebook.net/en_US/all.js#xfbml=1\"; fjs.parentNode.insertBefore(js, fjs);	}(document, 'script', 'facebook-jssdk')); !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='//platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document,'script','twitter-wjs');";
@@ -83,4 +72,40 @@
 		socialDefer();
 	}
 
+	/*******************************************************************
+	*	Flag Request
+	*		- Sends AJAX request for flagging mechinism
+	*******************************************************************/
+	function flagRequest(){
+		var $form = $flag.parent('form');
+		var $ajaxSubmit = $flag.prev('.ajaxSubmit');
+		$flag.addClass('hidden');
+		$ajaxSubmit.removeClass('hidden');
+		$ajaxSubmit.on('click', 'a', function(e){
+			e.preventDefault;
+			var data = $form.serialize();
+			$.ajax({
+				type: 	'POST',
+				url: 	WEBROOT + 'pages/flag',
+				data: 	data,
+				success: function(data){
+					var returnData = $.parseJSON(data);
+					if(typeof returnData !== 'undefined' && returnData.saveError === false){
+						alert('Your flag was not recorded, please try again.');
+					}
+					if(typeof returnData !== 'undefined' && returnData.flagged === true){
+						$('div.ajaxSubmit').find('a')
+							.html('Flagged \<span\>\&\#9873;\</span\>')
+							.removeAttr('href')
+							.removeClass('Flag')
+							.addClass('Flagged');
+					}
+				}
+			});
+		});
+	}
+	var $flag = $('input.flag');
+	if($flag.length){
+		flagRequest();
+	}
 })(jQuery, this, document);
